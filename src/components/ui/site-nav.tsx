@@ -10,6 +10,8 @@ interface MePayload {
   user: {
     id: string;
     email?: string;
+    isAdmin?: boolean;
+    adminDisplayName?: string | null;
   } | null;
   profile?: {
     xUsername: string | null;
@@ -53,6 +55,8 @@ export function SiteNav() {
   }, []);
 
   const xUsername = useMemo(() => me?.profile?.xUsername, [me?.profile?.xUsername]);
+  const isAdmin = Boolean(me?.user?.isAdmin);
+  const adminName = me?.user?.adminDisplayName ?? "Lobstar";
 
   async function handleLogout() {
     await fetch("/api/auth/logout", { method: "POST" });
@@ -61,14 +65,14 @@ export function SiteNav() {
   }
 
   return (
-    <header className="sticky top-0 z-30 border-b border-white/10 bg-[rgba(8,10,18,0.82)] backdrop-blur-md">
+    <header className="sticky top-0 z-30 border-b border-white/10 bg-[rgba(11,10,10,0.84)] backdrop-blur-md">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-4 py-4 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center justify-between">
           <Link href="/" className="font-heading text-xl tracking-tight text-white">
             Klaw Field
           </Link>
-          <div className="text-[11px] uppercase tracking-[0.18em] text-violet-300/70 md:hidden">
-            Community Proof Hub
+          <div className="text-[11px] uppercase tracking-[0.18em] text-rose-300/70 md:hidden">
+            Moderation Network
           </div>
         </div>
 
@@ -80,10 +84,10 @@ export function SiteNav() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "rounded-full border px-3 py-1.5 text-sm transition-colors",
+                  "rounded-lg border px-3 py-1.5 text-sm transition-colors",
                   active
-                    ? "border-violet-400/80 bg-violet-400/20 text-white"
-                    : "border-white/15 bg-white/[0.04] text-slate-200 hover:border-violet-300/50 hover:text-white",
+                    ? "border-rose-400/80 bg-rose-500/20 text-white"
+                    : "border-white/15 bg-white/[0.04] text-slate-200 hover:border-rose-300/50 hover:text-white",
                 )}
               >
                 {item.label}
@@ -97,13 +101,13 @@ export function SiteNav() {
             <span className="text-slate-400">Loading session...</span>
           ) : me?.user ? (
             <>
-              <span className="rounded-full border border-violet-400/30 bg-violet-500/10 px-3 py-1 text-xs">
-                {xUsername ? `@${xUsername}` : me.user.email}
+              <span className="rounded-lg border border-rose-400/30 bg-rose-500/10 px-3 py-1 text-xs">
+                {isAdmin ? `${adminName} (Admin)` : xUsername ? `@${xUsername}` : me.user.email}
               </span>
               <button
                 type="button"
                 onClick={handleLogout}
-                className="rounded-full border border-white/20 px-3 py-1 text-xs text-slate-200 transition hover:border-violet-300/60 hover:text-white"
+                className="rounded-lg border border-white/20 px-3 py-1 text-xs text-slate-200 transition hover:border-rose-300/60 hover:text-white"
               >
                 Logout
               </button>
@@ -112,13 +116,13 @@ export function SiteNav() {
             <>
               <Link
                 href="/auth/login"
-                className="rounded-full border border-white/20 px-3 py-1 text-xs hover:border-violet-300/60"
+                className="rounded-lg border border-white/20 px-3 py-1 text-xs hover:border-rose-300/60"
               >
                 Login
               </Link>
               <Link
                 href="/auth/register"
-                className="rounded-full bg-gradient-to-r from-violet-500 to-indigo-500 px-3 py-1 text-xs font-semibold text-white"
+                className="rounded-lg bg-gradient-to-r from-red-600 to-rose-700 px-3 py-1 text-xs font-semibold text-white"
               >
                 Register
               </Link>

@@ -104,7 +104,7 @@ export function SubmitStoryForm() {
         <div className="mt-4 flex gap-2">
           <Link
             href="/auth/login"
-            className="rounded-xl bg-gradient-to-r from-violet-500 to-indigo-500 px-4 py-2 text-sm font-semibold text-white"
+            className="rounded-xl bg-gradient-to-r from-red-600 to-rose-700 px-4 py-2 text-sm font-semibold text-white"
           >
             Go to Login
           </Link>
@@ -128,8 +128,8 @@ export function SubmitStoryForm() {
         </p>
       </Panel>
 
-      <Panel className="border-violet-300/30 bg-violet-500/10">
-        <p className="text-sm text-violet-100">
+      <Panel className="border-rose-300/30 bg-rose-500/10">
+        <p className="text-sm text-rose-100">
           <strong>Proof Disclaimer:</strong> {disclaimer}
         </p>
       </Panel>
@@ -143,7 +143,7 @@ export function SubmitStoryForm() {
               onChange={(event) => setXUsername(event.target.value)}
               placeholder="@yourhandle"
               required
-              className="w-full rounded-xl border border-white/15 bg-[#0f1426] px-3 py-2 text-sm text-white outline-none focus:border-violet-400/70"
+              className="w-full rounded-xl border border-white/15 bg-[#141113] px-3 py-2 text-sm text-white outline-none focus:border-rose-400/70"
             />
             <span className="mt-1 block text-xs text-slate-400">
               This is locked after first successful set.
@@ -159,7 +159,7 @@ export function SubmitStoryForm() {
               maxLength={5000}
               rows={7}
               required
-              className="w-full rounded-xl border border-white/15 bg-[#0f1426] px-3 py-2 text-sm text-white outline-none focus:border-violet-400/70"
+              className="w-full rounded-xl border border-white/15 bg-[#141113] px-3 py-2 text-sm text-white outline-none focus:border-rose-400/70"
             />
           </label>
 
@@ -170,7 +170,7 @@ export function SubmitStoryForm() {
                 value={walletSolana}
                 onChange={(event) => setWalletSolana(event.target.value)}
                 required
-                className="w-full rounded-xl border border-white/15 bg-[#0f1426] px-3 py-2 text-sm text-white outline-none focus:border-violet-400/70"
+                className="w-full rounded-xl border border-white/15 bg-[#141113] px-3 py-2 text-sm text-white outline-none focus:border-rose-400/70"
               />
             </label>
             <label className="block">
@@ -179,7 +179,7 @@ export function SubmitStoryForm() {
                 value={country}
                 onChange={(event) => setCountry(event.target.value)}
                 required
-                className="w-full rounded-xl border border-white/15 bg-[#0f1426] px-3 py-2 text-sm text-white outline-none focus:border-violet-400/70"
+                className="w-full rounded-xl border border-white/15 bg-[#141113] px-3 py-2 text-sm text-white outline-none focus:border-rose-400/70"
               />
             </label>
           </div>
@@ -190,7 +190,7 @@ export function SubmitStoryForm() {
           <button
             type="submit"
             disabled={loading}
-            className="rounded-xl bg-gradient-to-r from-violet-500 to-indigo-500 px-5 py-2 text-sm font-semibold text-white disabled:opacity-60"
+            className="rounded-xl bg-gradient-to-r from-red-600 to-rose-700 px-5 py-2 text-sm font-semibold text-white disabled:opacity-60"
           >
             {loading ? "Submitting..." : "Submit Story"}
           </button>

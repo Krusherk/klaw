@@ -67,8 +67,8 @@ export function MySubmissionsView() {
         </p>
       </Panel>
 
-      <Panel className="border-violet-300/30 bg-violet-500/10">
-        <p className="text-sm text-violet-100">
+      <Panel className="border-rose-300/30 bg-rose-500/10">
+        <p className="text-sm text-rose-100">
           <strong>Proof Disclaimer:</strong> {disclaimer}
         </p>
       </Panel>
@@ -79,14 +79,14 @@ export function MySubmissionsView() {
       {!loading && !error ? (
         stories.length === 0 ? (
           <Panel>
-            You do not have submissions yet. <Link href="/submit" className="text-violet-300">Create one now.</Link>
+            You do not have submissions yet. <Link href="/submit" className="text-rose-300">Create one now.</Link>
           </Panel>
         ) : (
           <div className="space-y-3">
             {stories.map((story) => (
               <Panel key={story.id} className="space-y-3">
                 <div className="flex flex-wrap items-center justify-between gap-3">
-                  <div className="text-xs text-violet-200">@{story.xUsername}</div>
+                  <div className="text-xs text-rose-200">@{story.xUsername}</div>
                   <StatusBadge status={story.status} />
                 </div>
 
@@ -103,7 +103,7 @@ export function MySubmissionsView() {
                       <p className="mt-2 text-xs text-slate-200">
                         Proof:{" "}
                         <a
-                          className="text-violet-300 underline"
+                          className="text-rose-300 underline"
                           href={story.task.proofUrl}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -124,13 +124,13 @@ export function MySubmissionsView() {
                             }))
                           }
                           placeholder="Paste your X status proof URL"
-                          className="w-full rounded-lg border border-white/15 bg-[#0f1426] px-3 py-2 text-sm text-white outline-none focus:border-violet-400/70"
+                          className="w-full rounded-lg border border-white/15 bg-[#141113] px-3 py-2 text-sm text-white outline-none focus:border-rose-400/70"
                         />
                         <button
                           type="button"
                           disabled={savingStoryId === story.id}
                           onClick={() => void submitProof(story.id)}
-                          className="rounded-lg bg-gradient-to-r from-violet-500 to-indigo-500 px-4 py-2 text-sm font-semibold text-white disabled:opacity-60"
+                          className="rounded-lg bg-gradient-to-r from-red-600 to-rose-700 px-4 py-2 text-sm font-semibold text-white disabled:opacity-60"
                         >
                           {savingStoryId === story.id ? "Submitting..." : "Submit Proof"}
                         </button>

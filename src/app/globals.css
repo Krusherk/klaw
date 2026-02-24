@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #070b14;
-  --foreground: #e6ebff;
+  --background: #090909;
+  --foreground: #f4f4f5;
 }
 
 @theme inline {
@@ -25,12 +25,14 @@ body {
 }
 
 .bg-grid-pattern {
-  background-image: radial-gradient(circle, rgba(167, 175, 216, 0.18) 0.65px, transparent 0.7px);
-  background-size: 24px 24px;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 34px 34px;
 }
 
 .text-gradient {
-  background: linear-gradient(110deg, #ffffff 0%, #b3b7ff 45%, #8ca0ff 80%);
+  background: linear-gradient(110deg, #ffffff 0%, #ffd5d5 40%, #ff7a7a 82%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -52,6 +54,6 @@ body {
 }
 
 ::selection {
-  background: rgba(121, 109, 255, 0.38);
+  background: rgba(220, 38, 38, 0.34);
   color: #fff;
 }

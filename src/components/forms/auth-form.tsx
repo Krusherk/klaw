@@ -65,7 +65,7 @@ export function AuthForm({ mode }: AuthFormProps) {
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               required
-              className="w-full rounded-xl border border-white/15 bg-[#0f1426] px-3 py-2 text-sm text-white outline-none focus:border-violet-400/70"
+              className="w-full rounded-xl border border-white/15 bg-[#141113] px-3 py-2 text-sm text-white outline-none focus:border-rose-400/70"
             />
           </label>
 
@@ -78,7 +78,7 @@ export function AuthForm({ mode }: AuthFormProps) {
               onChange={(event) => setPassword(event.target.value)}
               required
               minLength={8}
-              className="w-full rounded-xl border border-white/15 bg-[#0f1426] px-3 py-2 text-sm text-white outline-none focus:border-violet-400/70"
+              className="w-full rounded-xl border border-white/15 bg-[#141113] px-3 py-2 text-sm text-white outline-none focus:border-rose-400/70"
             />
           </label>
 
@@ -88,7 +88,7 @@ export function AuthForm({ mode }: AuthFormProps) {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-xl bg-gradient-to-r from-violet-500 to-indigo-500 px-4 py-2 text-sm font-semibold text-white disabled:opacity-60"
+            className="w-full rounded-xl bg-gradient-to-r from-red-600 to-rose-700 px-4 py-2 text-sm font-semibold text-white disabled:opacity-60"
           >
             {loading ? "Please wait..." : mode === "login" ? "Login" : "Register"}
           </button>
@@ -98,7 +98,7 @@ export function AuthForm({ mode }: AuthFormProps) {
           {mode === "login" ? "No account yet?" : "Already have an account?"}{" "}
           <Link
             href={mode === "login" ? "/auth/register" : "/auth/login"}
-            className="font-semibold text-violet-300"
+            className="font-semibold text-rose-300"
           >
             {mode === "login" ? "Register" : "Sign in"}
           </Link>

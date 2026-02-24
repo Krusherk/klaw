@@ -35,8 +35,8 @@ export default function RootLayout({
         className={`${sora.variable} ${manrope.variable} ${jetBrainsMono.variable} antialiased`}
       >
         <div className="relative min-h-screen overflow-x-hidden">
-          <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(84,76,255,0.18),transparent_38%),radial-gradient(circle_at_78%_0%,rgba(136,99,255,0.2),transparent_40%),radial-gradient(circle_at_50%_100%,rgba(44,63,152,0.15),transparent_45%),linear-gradient(180deg,#060810_0%,#070b17_45%,#090f1d_100%)]" />
-          <div className="pointer-events-none fixed inset-0 -z-10 bg-grid-pattern opacity-35" />
+          <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_14%_8%,rgba(220,38,38,0.24),transparent_34%),radial-gradient(circle_at_88%_0%,rgba(127,29,29,0.22),transparent_40%),radial-gradient(circle_at_50%_100%,rgba(57,24,24,0.44),transparent_48%),linear-gradient(180deg,#050505_0%,#0a0a0a_52%,#111214_100%)]" />
+          <div className="pointer-events-none fixed inset-0 -z-10 bg-grid-pattern opacity-25" />
           <SiteNav />
           <main className="mx-auto w-full max-w-6xl px-4 py-8 md:px-6">{children}</main>
         </div>

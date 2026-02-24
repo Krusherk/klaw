@@ -33,6 +33,9 @@ Copy `.env.example` to `.env.local` and fill values:
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 - `SUPABASE_SERVICE_ROLE_KEY`
 - `ADMIN_EMAILS` (comma-separated)
+- `ADMIN_DISPLAY_NAME` (defaults to `Lobstar`)
+- `LOBSTAR_ADMIN_EMAIL`
+- `LOBSTAR_ADMIN_PASSWORD`
 
 ## Database
 
@@ -57,6 +60,7 @@ Open `http://localhost:3000`.
 - `npm run build`
 - `npm run lint`
 - `npm run test`
+- `npm run admin:lobstar` (create/update Lobstar admin user in Supabase Auth + `profiles`)
 
 ## API Surface
 
@@ -81,3 +85,4 @@ Open `http://localhost:3000`.
 - Wallet and country remain admin-only in API/UI exposure.
 - Proof links are visible to owner and admin screens only.
 - Story feed defaults to oldest-first order.
+- Admin identity is allowlist-based using `ADMIN_EMAILS`. Default target is `lobstar@klawfield.app`.

@@ -1,5 +1,6 @@
 import { getAuthenticatedUser } from "@/lib/auth";
 import { getProfileByUserId } from "@/lib/db";
+import { env, isAdminEmail } from "@/lib/env";
 import { handleApiError } from "@/lib/http";
 
 export async function GET() {
@@ -10,10 +11,13 @@ export async function GET() {
     }
 
     const profile = await getProfileByUserId(user.id);
+    const admin = isAdminEmail(user.email);
     return Response.json({
       user: {
         id: user.id,
         email: user.email,
+        isAdmin: admin,
+        adminDisplayName: admin ? env.adminDisplayName : null,
       },
       profile: {
         xUsername: profile?.x_username ?? null,

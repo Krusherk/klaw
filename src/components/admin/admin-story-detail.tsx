@@ -100,7 +100,7 @@ export function AdminStoryDetail({ storyId }: AdminStoryDetailProps) {
               href={story.task.proofUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="break-all text-violet-300 underline"
+              className="break-all text-rose-300 underline"
             >
               {story.task.proofUrl}
             </a>
@@ -115,7 +115,7 @@ export function AdminStoryDetail({ storyId }: AdminStoryDetailProps) {
             value={taskText}
             onChange={(event) => setTaskText(event.target.value)}
             rows={4}
-            className="w-full rounded-lg border border-white/15 bg-[#0f1426] px-3 py-2 text-sm text-white outline-none"
+            className="w-full rounded-lg border border-white/15 bg-[#141113] px-3 py-2 text-sm text-white outline-none"
           />
           <button
             type="button"
@@ -125,7 +125,7 @@ export function AdminStoryDetail({ storyId }: AdminStoryDetailProps) {
                 taskText,
               })
             }
-            className="rounded-lg border border-violet-300/50 bg-violet-500/15 px-4 py-2 text-sm text-violet-100"
+            className="rounded-lg border border-rose-300/50 bg-rose-500/15 px-4 py-2 text-sm text-rose-100"
           >
             Assign Task
           </button>
@@ -137,7 +137,7 @@ export function AdminStoryDetail({ storyId }: AdminStoryDetailProps) {
             value={decisionNote}
             onChange={(event) => setDecisionNote(event.target.value)}
             rows={4}
-            className="w-full rounded-lg border border-white/15 bg-[#0f1426] px-3 py-2 text-sm text-white outline-none"
+            className="w-full rounded-lg border border-white/15 bg-[#141113] px-3 py-2 text-sm text-white outline-none"
           />
           <div className="flex flex-wrap gap-2">
             <button
@@ -176,7 +176,7 @@ export function AdminStoryDetail({ storyId }: AdminStoryDetailProps) {
         </div>
       </Panel>
 
-      <Link href="/admin" className="inline-block text-sm text-violet-300 underline">
+      <Link href="/admin" className="inline-block text-sm text-rose-300 underline">
         Back to moderation queue
       </Link>
     </div>

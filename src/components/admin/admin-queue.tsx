@@ -80,9 +80,9 @@ export function AdminQueue() {
               key={item.value}
               type="button"
               onClick={() => setStatus(item.value)}
-              className={`rounded-full border px-3 py-1.5 text-xs ${
-                status === item.value
-                  ? "border-violet-400/80 bg-violet-500/20 text-white"
+                  className={`rounded-full border px-3 py-1.5 text-xs ${
+                    status === item.value
+                  ? "border-rose-400/80 bg-rose-500/20 text-white"
                   : "border-white/15 bg-white/[0.03] text-slate-200"
               }`}
             >
@@ -102,11 +102,11 @@ export function AdminQueue() {
             value={search}
             onChange={(event) => setSearch(event.target.value)}
             placeholder="Search X username"
-            className="w-full rounded-lg border border-white/15 bg-[#0f1426] px-3 py-2 text-sm text-white outline-none"
+            className="w-full rounded-lg border border-white/15 bg-[#141113] px-3 py-2 text-sm text-white outline-none"
           />
           <button
             type="submit"
-            className="rounded-lg bg-gradient-to-r from-violet-500 to-indigo-500 px-4 py-2 text-sm font-semibold text-white"
+            className="rounded-lg bg-gradient-to-r from-red-600 to-rose-700 px-4 py-2 text-sm font-semibold text-white"
           >
             Search
           </button>
@@ -125,7 +125,7 @@ export function AdminQueue() {
               <Panel key={story.id} className="space-y-3">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div>
-                    <p className="text-xs text-violet-200">@{story.xUsername}</p>
+                    <p className="text-xs text-rose-200">@{story.xUsername}</p>
                     <p className="text-xs text-slate-400">Submitted {formatDate(story.submittedAt)}</p>
                   </div>
                   <div className="flex items-center gap-2">
@@ -158,7 +158,7 @@ export function AdminQueue() {
                         href={story.task.proofUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="break-all text-violet-300 underline"
+                        className="break-all text-rose-300 underline"
                       >
                         {story.task.proofUrl}
                       </a>
@@ -178,7 +178,7 @@ export function AdminQueue() {
                         }))
                       }
                       placeholder="Enter task for this story"
-                      className="w-full rounded-lg border border-white/15 bg-[#0f1426] px-3 py-2 text-sm text-white outline-none"
+                      className="w-full rounded-lg border border-white/15 bg-[#141113] px-3 py-2 text-sm text-white outline-none"
                     />
                     <button
                       type="button"
@@ -188,7 +188,7 @@ export function AdminQueue() {
                           taskText: taskInput[story.id] ?? story.task?.taskText ?? "",
                         })
                       }
-                      className="rounded-lg border border-violet-300/50 bg-violet-500/15 px-3 py-2 text-xs text-violet-100 disabled:opacity-60"
+                      className="rounded-lg border border-rose-300/50 bg-rose-500/15 px-3 py-2 text-xs text-rose-100 disabled:opacity-60"
                     >
                       {busyStoryId === story.id ? "Saving..." : "Assign Task"}
                     </button>
@@ -205,7 +205,7 @@ export function AdminQueue() {
                         }))
                       }
                       placeholder="Optional note"
-                      className="w-full rounded-lg border border-white/15 bg-[#0f1426] px-3 py-2 text-sm text-white outline-none"
+                      className="w-full rounded-lg border border-white/15 bg-[#141113] px-3 py-2 text-sm text-white outline-none"
                     />
 
                     <div className="flex flex-wrap gap-2">

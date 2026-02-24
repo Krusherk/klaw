@@ -87,7 +87,7 @@ export function PublicStoriesView() {
               type="button"
               className={`rounded-full px-3 py-1.5 text-xs ${
                 viewMode === "hybrid"
-                  ? "bg-violet-500 text-white"
+                  ? "bg-red-600 text-white"
                   : "border border-white/20 bg-white/5 text-slate-200"
               }`}
               onClick={() => setViewMode("hybrid")}
@@ -98,7 +98,7 @@ export function PublicStoriesView() {
               type="button"
               className={`rounded-full px-3 py-1.5 text-xs ${
                 viewMode === "compact"
-                  ? "bg-violet-500 text-white"
+                  ? "bg-red-600 text-white"
                   : "border border-white/20 bg-white/5 text-slate-200"
               }`}
               onClick={() => setViewMode("compact")}
@@ -122,8 +122,8 @@ export function PublicStoriesView() {
                   }}
                   className={`rounded-full border px-3 py-1.5 text-xs transition ${
                     status === item.value
-                      ? "border-violet-400/80 bg-violet-500/20 text-white"
-                      : "border-white/15 bg-white/[0.03] text-slate-200 hover:border-violet-300/40"
+                      ? "border-rose-400/80 bg-rose-500/20 text-white"
+                      : "border-white/15 bg-white/[0.03] text-slate-200 hover:border-rose-300/40"
                   }`}
                 >
                   {item.label} ({count})
@@ -144,11 +144,11 @@ export function PublicStoriesView() {
               value={search}
               onChange={(event) => setSearch(event.target.value)}
               placeholder="Search by X username"
-              className="w-full rounded-xl border border-white/15 bg-[#0f1426] px-3 py-2 text-sm text-white outline-none focus:border-violet-400/70"
+              className="w-full rounded-xl border border-white/15 bg-[#141113] px-3 py-2 text-sm text-white outline-none focus:border-rose-400/70"
             />
             <button
               type="submit"
-              className="rounded-xl bg-gradient-to-r from-violet-500 to-indigo-500 px-4 py-2 text-sm font-semibold text-white"
+              className="rounded-xl bg-gradient-to-r from-red-600 to-rose-700 px-4 py-2 text-sm font-semibold text-white"
             >
               Search
             </button>
@@ -183,7 +183,7 @@ export function PublicStoriesView() {
               {result.stories.map((story) => (
                 <Panel key={story.id} className="space-y-3">
                   <div className="flex items-center justify-between gap-3">
-                    <div className="text-xs text-violet-200">@{story.xUsername}</div>
+                    <div className="text-xs text-rose-200">@{story.xUsername}</div>
                     <StatusBadge status={story.status} />
                   </div>
                   <p className="line-clamp-4 text-sm leading-relaxed text-slate-200">{story.storyText}</p>

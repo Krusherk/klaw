@@ -9,6 +9,7 @@ const adminEmailSet = new Set(
 
 export const env = {
   appName: process.env.NEXT_PUBLIC_APP_NAME ?? "Klaw Field",
+  adminDisplayName: process.env.ADMIN_DISPLAY_NAME ?? "Lobstar",
   supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL ?? "",
   supabaseAnonKey:
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ??

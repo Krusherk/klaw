@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint .",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "admin:lobstar": "node --env-file=.env.local scripts/bootstrap-lobstar-admin.mjs"
   },
   "dependencies": {
     "@solana/web3.js": "^1.98.4",
