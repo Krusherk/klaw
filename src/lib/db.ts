@@ -19,9 +19,40 @@ interface StoryFilters {
   pageSize: number;
 }
 
+function extractMissingTableName(message: string) {
+  const match = message.match(/table 'public\.([a-zA-Z0-9_]+)'/i);
+  if (match?.[1]) {
+    return `public.${match[1]}`;
+  }
+  return null;
+}
+
+function isSchemaMissingError(error: PostgrestError) {
+  const code = (error.code ?? "").toUpperCase();
+  const message = `${error.message} ${error.details ?? ""}`.toLowerCase();
+  if (code === "PGRST205" || code === "42P01") {
+    return true;
+  }
+  if (message.includes("could not find the table")) {
+    return true;
+  }
+  if (message.includes("relation") && message.includes("does not exist")) {
+    return true;
+  }
+  return false;
+}
+
 function mapPostgresError(error: PostgrestError): never {
   if (error.code === "23505") {
     throw new ApiError(409, "This action violates a unique constraint.");
+  }
+  if (isSchemaMissingError(error)) {
+    const relation = extractMissingTableName(error.message);
+    const relationPart = relation ? ` Missing relation: ${relation}.` : "";
+    throw new ApiError(
+      500,
+      `Database schema is not initialized for this Supabase project.${relationPart} Run all SQL migrations in order: supabase/migrations/0001_initial.sql then supabase/migrations/0002_realtime.sql.`,
+    );
   }
   throw new ApiError(500, error.message);
 }

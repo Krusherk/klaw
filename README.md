@@ -42,6 +42,7 @@ Copy `.env.example` to `.env.local` and fill values:
 Run migration SQL from:
 
 - `supabase/migrations/0001_initial.sql`
+- `supabase/migrations/0002_realtime.sql`
 
 This migration includes enums, tables, indexes, RLS policies, and public feed view.
 
@@ -61,6 +62,7 @@ Open `http://localhost:3000`.
 - `npm run lint`
 - `npm run test`
 - `npm run admin:lobstar` (create/update Lobstar admin user in Supabase Auth + `profiles`)
+- `npm run db:health` (checks required schema + realtime status using service role key)
 
 ## API Surface
 
@@ -86,3 +88,13 @@ Open `http://localhost:3000`.
 - Proof links are visible to owner and admin screens only.
 - Story feed defaults to oldest-first order.
 - Admin identity is allowlist-based using `ADMIN_EMAILS`. Default target is `lobstar@klawfield.app`.
+
+## Troubleshooting
+
+If you see `Could not find the table 'public.profiles' in the schema cache`, your Supabase DB is missing migrations.
+
+1. Run SQL in this order inside Supabase SQL Editor:
+   - `supabase/migrations/0001_initial.sql`
+   - `supabase/migrations/0002_realtime.sql`
+2. Redeploy your app.
+3. Run `npm run db:health` locally (with service role key set) to verify schema + realtime setup.

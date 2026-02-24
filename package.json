@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "admin:lobstar": "node --env-file=.env.local scripts/bootstrap-lobstar-admin.mjs"
+    "admin:lobstar": "node --env-file=.env.local scripts/bootstrap-lobstar-admin.mjs",
+    "db:health": "node --env-file=.env.local scripts/check-db-health.mjs"
   },
   "dependencies": {
     "@solana/web3.js": "^1.98.4",
