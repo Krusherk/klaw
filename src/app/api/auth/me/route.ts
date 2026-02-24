@@ -10,8 +10,18 @@ export async function GET() {
       return Response.json({ user: null });
     }
 
-    const profile = await getProfileByUserId(user.id);
     const admin = isAdminEmail(user.email);
+    let xUsername: string | null = null;
+    let profileUnavailable = false;
+
+    try {
+      const profile = await getProfileByUserId(user.id);
+      xUsername = profile?.x_username ?? null;
+    } catch {
+      // Keep session UX working even when DB/profile lookup is temporarily unavailable.
+      profileUnavailable = true;
+    }
+
     return Response.json({
       user: {
         id: user.id,
@@ -20,7 +30,10 @@ export async function GET() {
         adminDisplayName: admin ? env.adminDisplayName : null,
       },
       profile: {
-        xUsername: profile?.x_username ?? null,
+        xUsername,
+      },
+      meta: {
+        profileUnavailable,
       },
     });
   } catch (error) {
