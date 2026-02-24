@@ -4,7 +4,7 @@ import { attachSessionCookies } from "@/lib/auth";
 import { ensureProfile } from "@/lib/db";
 import { ApiError, getClientIp, handleApiError } from "@/lib/http";
 import { checkRateLimit } from "@/lib/rate-limit";
-import { createSupabaseAnonClient } from "@/lib/supabase";
+import { createSupabaseAnonClient, createSupabaseServiceClient } from "@/lib/supabase";
 import { registerSchema } from "@/lib/validators";
 
 export async function POST(request: Request) {
@@ -16,32 +16,41 @@ export async function POST(request: Request) {
     }
 
     const body = registerSchema.parse(await request.json());
-    const supabase = createSupabaseAnonClient();
-    const { data, error } = await supabase.auth.signUp({
+    const serviceClient = createSupabaseServiceClient();
+    const { data: created, error: createError } = await serviceClient.auth.admin.createUser({
+      email: body.email,
+      password: body.password,
+      email_confirm: true,
+    });
+
+    if (createError || !created.user) {
+      const message = createError?.message ?? "Unable to create account.";
+      if (message.toLowerCase().includes("already registered")) {
+        throw new ApiError(409, "Email is already registered.");
+      }
+      throw new ApiError(400, message);
+    }
+
+    await ensureProfile(created.user.id, created.user.email ?? body.email);
+
+    const anonClient = createSupabaseAnonClient();
+    const { data: sessionData, error: signInError } = await anonClient.auth.signInWithPassword({
       email: body.email,
       password: body.password,
     });
 
-    if (error) {
-      throw new ApiError(400, error.message);
-    }
-    if (!data.user) {
+    if (signInError || !sessionData.user || !sessionData.session) {
       throw new ApiError(500, "Unable to create account.");
     }
 
-    await ensureProfile(data.user.id, data.user.email ?? body.email);
-
     const response = NextResponse.json({
       user: {
-        id: data.user.id,
-        email: data.user.email,
+        id: sessionData.user.id,
+        email: sessionData.user.email,
       },
-      requiresEmailVerification: !data.session,
+      requiresEmailVerification: false,
     });
-
-    if (data.session) {
-      attachSessionCookies(response, data.session);
-    }
+    attachSessionCookies(response, sessionData.session);
 
     return response;
   } catch (error) {
